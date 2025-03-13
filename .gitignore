@@ -1,0 +1,46 @@
+# Nginx log files
+logs/
+*.log
+
+# SSL certificates
+certs/
+*.crt
+*.key
+*.pem
+
+# Web content directory (can be versioned if needed)
+# Uncomment if you want to ignore the entire html directory
+# html/
+
+# Docker related
+.env
+.docker/
+docker-compose.override.yml
+docker-data/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# IDE related
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+*.code-workspace
+
+# OS related
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+

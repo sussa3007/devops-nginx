@@ -1,0 +1,35 @@
+
+server {
+    listen 80;
+    server_name ;
+    set $mobile_rewrite false;
+
+    if ($http_user_agent ~* '(iPhone|iPod|iPad|Android|BlackBerry|webOS|Windows Phone)') {
+        set $mobile_rewrite true;
+    }
+
+    root /var/www/html;
+    index index.html index.htm;
+
+
+    location / {
+        proxy_pass http://auto-solution;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Device-Custom $mobile_rewrite;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name domain;
+
+    root /home/ubuntu/work/calc-fe;
+    index index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
